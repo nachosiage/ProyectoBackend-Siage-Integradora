@@ -1,0 +1,50 @@
+<div>
+    <a href="/">
+        <button>Home</button>
+    </a>
+    <h2 class="realTimeTitle">Productos en tiempo real ⏳</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Code</th>
+                </tr>
+            </thead>
+            <tbody id="tableRealTime">
+                {{#each products}}
+                    <tr data-product-id="{{id}}">
+                        <th scope="row">{{id}}</th>
+                        <td>{{title}}</td>
+                        <td>{{description}}</td>
+                        <td>${{price}}</td>
+                        <td>{{code}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+</div>
+<div class="addProduct">
+    <h3>➕ Agregar producto:</h3>
+    <form id="addProductForm">
+        <input required class="prod-info" type="text" name="title" placeholder="Titulo">
+        <input required class="prod-info" type="text" name="description" placeholder="Descripcion">
+        <input required class="prod-info" type="text" name="code" placeholder="Codigo">
+        <input required class="prod-info" type="number" name="price" placeholder="Precio">
+        <input required class="prod-info" type="number" name="stock" placeholder="Stock">
+        <input required type="submit" value="Enviar">
+    </form>
+</div>
+<div class="deleteProducts">
+    <h3>❌ Eliminar producto: </h3>
+    <form id="formDelete">
+        <input type="text" placeholder="ID del producto a eliminar" required id="deleteProd">
+        <input required type="submit" value="Enviar">
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realTime.js"></script>
+
